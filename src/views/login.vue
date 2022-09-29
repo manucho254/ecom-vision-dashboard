@@ -16,6 +16,7 @@
                     acceptTerms: "",
                 },
                 passWordInputType: "password",
+                toastCount: 0,
             }
         },
         validations: {
@@ -44,6 +45,8 @@
                 this.$v.$touch();
                 if (!this.$v.$invalid) {
                     console.log("Invalid data")
+                }else{
+                    this.makeToast("login successfull", "success")
                 }
             },
             passWordToggle (){
@@ -52,6 +55,9 @@
                 }else{
                     this.passWordInputType = "password"
                 }
+            },
+            makeToast (message, variant) {
+                this.$bvToast.toast(message, { variant: variant, solid: true })
             }
         },
         mounted () {
@@ -73,10 +79,10 @@
                     <button class="btn-orange btn"> Request Demo</button>
                 </div>
             </nav>
-            <div style="height:70vh;" class="d-flex justify-content-center 
+            <div style="height: 70vh;" class="d-flex justify-content-center 
                 align-items-center">
-                <div class="card p-5 card-border">
-                    <div class="d-flex flex-column gap-3 mb-4">
+                <div class="card p-5 pb-4 pt-4 card-border">
+                    <div class="d-flex flex-column gap-3 mb-2">
                         <h3 class="header">Agent Login</h3>
                         <p class="header-text">Hey, enter your details to sign in to you account.</p>
                     </div>
@@ -98,7 +104,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="form-group mb-3">
+                        <div class="form-group mb-2">
                             <input 
                                 class="form-control" 
                                 :type="passWordInputType" 
@@ -127,17 +133,28 @@
                                 </span>
                             </div>
                         </div>
-                        <p class="text-start tex-sm">Having trouble in sign in?</p>
+                        <p class="text-start">Having trouble in sign in?</p>
                         <div class="form-group">
-                            <button class="mt-3 btn btn-orange w-100">Sign In</button>
+                            <button class="mt-2 btn btn-orange w-100">Sign In</button>
                         </div>
                     </form>
-                    <div class="d-flex justify-content-center
-                            mt-5">
+                    <div class="d-flex gap-2 align-items-center justify-content-center mt-3">
                         <div class="w-25"><hr></div>
                         <div class="bt-2">Or sign in with</div>
                         <hr class="w-25">
                     </div>
+                    <div class="d-flex gap-2 justify-content-center align-items-center mt-3">
+                        <button class="btn btn-light border"> 
+                            <b-icon classs="icon-images" icon="google"></b-icon> Google</button>
+                        <button class="btn btn-light border d-flex flex-wrap justify-content-center gap-1"> 
+                            <img classs="icon-image" src="@/assets/apple.svg" alt="image"> 
+                            <span> Apple ID</span></button>
+                        <button  class="btn btn-light border">
+                            <b-icon classs="icon-images" icon="facebook"></b-icon> Facebook</button>
+                    </div>
+                    <p class="mt-3">Don't have an account?
+                        <a class="link text-dark text-decoration-none">Register Now</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -174,7 +191,7 @@
         font-weight: bold;
     }
     .header-text {
-        font-size: 20px !important;
+        font-size: 19px !important;
     }
     .form-control {
         box-shadow: none;
@@ -189,5 +206,9 @@
     }
     .password-show:hover {
         cursor: pointer;
+    }
+    .icon-image{
+        width: 20px !important;
+        height: 20px !important;
     }
 </style>

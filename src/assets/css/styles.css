@@ -1,6 +1,47 @@
+.sidebar{
+  width: 150px;
+  height: 739px;
+  background-color: #377060;
+  max-height: 739px;
+}
+
+.sidebar-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.sidebar-item {
+  width: auto;
+  text-align: start;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.sidebar-header {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.sidebar-item-active{
+  background-color: rgb(25, 74, 60);
+  cursor: pointer;
+}
+
+.sidebar-item:hover{
+  background-color: rgb(25, 74, 60);
+  cursor: pointer;
+}
+
+.router-link {
+  color: #fff !important;
+  text-decoration: none;
+}
 @media screen and (min-width: 1024px) {
-    .test {
-      background-color: #63c971;
+    .sidebar{
       color: #fff;
     }
   }
@@ -19,64 +60,48 @@
   /* For Mobile Portrait View */
   @media screen and (max-device-width: 480px)
   and (orientation: portrait) {
-    .gfg-div {
-      width: 200px;
-      height: 200px;
-      background-color: red;
-      color: #fff;
+    .sidebar{
+      width: auto;
     }
   }
    
   /* For Mobile Landscape View */
   @media screen and (max-device-width: 640px)
   and (orientation: landscape) {
-    .gfg-div {
-      width: 400px;
-      height: 200px;
-      background-color: cyan;
-      color: black;
+    .sidebar{
+      width: auto;
     }
   }
    
   /* For Mobile Phones Portrait or Landscape View */
   @media screen and (max-device-width: 640px) {
-    .gfg-div {
-      width: 400px;
-      height: 200px;
-      background-color: chartreuse;
-      color: black;
+    .sidebar{
+      width: auto;
     }
   }
    
   /* For iPhone 4 Portrait or Landscape View */
   @media screen and (min-device-width: 320px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    .gfg-div {
-      width: 400px;
-      height: 400px;
-      background-color: brown;
-      color: black;
+    .sidebar{
+      width: auto;
     }
   }
    
   /* For iPhone 5 Portrait or Landscape View */
   @media (device-height: 568px) and (device-width: 320px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    .gfg-div {
-      width: 400px;
-      height: 400px;
-      background-color: cornflowerblue;
-      color: black;
+    .sidebar{
+      width: auto;
     }
   }
    
   /* For iPhone 6 and 6 plus Portrait or Landscape View */
   @media (min-device-height: 667px) and (min-device-width: 375px)
   and (-webkit-min-device-pixel-ratio: 3) {
-    .gfg-div {
-      width: 400px;
-      height: 400px;
-      background-color: darkgoldenrod;
-      color: black;
+    .sidebar{
+      width: auto;
     }
   }
+
+  @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css")

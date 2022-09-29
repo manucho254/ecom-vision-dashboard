@@ -5,6 +5,18 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    name: 'dashboard',
+    component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard.vue'),
+    children: [
+      {
+        path: '/reports',
+        name: 'reports',
+        component: () => import(/* webpackChunkName: "dashboard" */ '../views/reports.vue'),
+      }
+    ]
+  },
+  {
     path: '/validation',
     name: 'validation',
     // route level code-splitting
