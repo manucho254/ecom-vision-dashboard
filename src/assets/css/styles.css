@@ -40,6 +40,49 @@
   color: #fff !important;
   text-decoration: none;
 }
+
+.section-name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(205, 219, 218);
+  border-radius: 50px;
+}
+
+.active-tab {
+  background-color: #377060 !important;
+  color: #fff !important;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.tab:hover {
+  cursor: pointer;
+}
+
+.tab-title {
+  font-size: 15px;
+  font-weight: 20px;
+}
+
+.tab-active-hr {
+  background-color: #4c8a79 !important;
+  height: 2px;
+}
+
 @media screen and (min-width: 1024px) {
     .sidebar{
       color: #fff;
