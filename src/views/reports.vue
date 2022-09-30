@@ -1,6 +1,9 @@
 <script>
+    import Users from "@/components/reports/users.vue"
+
     export default {
-        "name": "Reports",
+        name: "Reports",
+        components: { Users},
         data: () => {
             return {
                 activeTab: 1,
@@ -42,7 +45,7 @@
                 <div>test1</div>
             </section>
             <section v-if="activeTab == 2">
-                <div>test2</div>
+                <Users/>
             </section>
             <section v-if="activeTab === 3">
                 <div>test3</div>

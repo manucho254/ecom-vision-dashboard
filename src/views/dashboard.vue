@@ -12,7 +12,7 @@
     <div class="d-flex">
         <SideBar/>
         <div class="w-100">
-            <TopNav title="test"/>
+            <TopNav title="Reports"/>
             <div class="p-5"><router-view/></div>
         </div>
     </div>
