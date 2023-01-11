@@ -1,8 +1,6 @@
 <script>
 import {
   required,
-  minLength,
-  maxLength,
   email,
 } from "vuelidate/lib/validators";
 export default {
@@ -10,8 +8,8 @@ export default {
     return {
       googleImg: require("@/assets/google.svg"),
       formData: {
-        email: "",
-        password: "",
+        email: "test@test.com",
+        password: "testing",
         remember: false,
       },
     };
@@ -20,9 +18,7 @@ export default {
     formData: {
       email: { required, email },
       password: {
-        required,
-        maxLength: maxLength(20),
-        minLength: minLength(8),
+        required
       },
     },
   },
