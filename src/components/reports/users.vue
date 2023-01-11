@@ -1,12 +1,96 @@
 <script>
     export default {
         name: "Users",
+        data: () => {
+            return {
+                options: {
+                    chart: {
+                        toolbar: {
+                            show: false
+                        },
+                        responsive: [
+                            {
+                                breakpoint: 1000,
+                                options: {
+                                    plotOptions: {
+                                    bar: {
+                                        horizontal: true
+                                    }
+                                    },
+                                    legend: {
+                                    position: "bottom"
+                                    }
+                                }
+                            }
+                        ],
+                        zoom: {
+                            enabled: true,
+                            type: 'x',
+                            resetIcon: {
+                                offsetX: -10,
+                                offsetY: 0,
+                                fillColor: '#fff',
+                                strokeColor: '#37474F'
+                            },
+                            selection: {
+                                background: '#90CAF9',
+                                border: '#0D47A1'
+                            }    
+                        },
+                        stroke: {
+                            width: 3
+                        },
+                        grid: {
+                            borderColor: "#555",
+                            clipMarkers: false,
+                            yaxis: {
+                            lines: {
+                                show: false
+                            }
+                            }
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        fill: {
+                            gradient: {
+                            enabled: true,
+                            opacityFrom: 0.55,
+                            opacityTo: 0
+                            }
+                        },
+                        markers: {
+                            size: 5,
+                            colors: ["#000524"],
+                            strokeColor: "#00BAEC",
+                            strokeWidth: 3
+                        },
+                    },
+                    xaxis: {
+                        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+                        1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+                        1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
+                        1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+                    },
+                },
+                series: [{
+                    name: 'series-1',
+                    data: [30, 40, 45, 50, 49, 60, 70, 91,
+                    30, 40, 45, 50, 49, 60, 70, 91,
+                    30, 40, 45, 50, 49, 60, 70, 91,
+                    30, 40, 45, 50, 49, 60, 70, 91]
+                }],
+            }
+        },
+        methods: {
+
+        }
     }
 </script>
 
 <template>
     <div class="pt-4">
-        <div class="d-flex gap-5 align-items-center justify-content-between">
+        <div class="d-flex flex-wrap gap-5 align-items-center justify-content-between">
             <div class="d-flex">
                 <div class="d-flex flex-column align-items-center gap-1">
                     <span class="yellowish-circle"></span>
@@ -75,7 +159,13 @@
             <div class="col-md-4 d-flex">
                 <hr class="vertical-hr">
                 <div class="px-3">
-                    test
+                    <div class="card shadow">
+                        <p class="text-start px-4 pt-2">cool</p>
+                        <apexchart 
+                            width="430" height="300" type="bar" 
+                            :options="options" :series="series">
+                        </apexchart>
+                    </div>
                 </div>
             </div>
         </div>

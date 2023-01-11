@@ -1,19 +1,28 @@
 <script>
-    import SideBar from "@/components/sideBar.vue"
-    import TopNav from "@/components/topNav.vue";
+import SideBar from "@/components/sideBar.vue";
+import TopNav from "@/components/topNav.vue";
+import Dash from "@/components/dash.vue";
 
-    export default {
-        name: "dashboard",
-        components: { SideBar, TopNav }
-    }
+export default {
+  name: "mainPage",
+  components: { SideBar, TopNav, Dash },
+  data: () => {
+    return {
+      pageTitle: "",
+    };
+  },
+};
 </script>
 
 <template>
-    <div class="d-flex">
-        <SideBar/>
-        <div class="w-100">
-            <TopNav title="Reports"/>
-            <div class="p-5"><router-view/></div>
-        </div>
+  <div class="d-flex">
+    <SideBar />
+    <div class="w-100">
+      <TopNav />
+      <div class="main px-3">
+        <Dash v-if="$route.name === 'Dashboard'" />
+        <router-view />
+      </div>
     </div>
+  </div>
 </template>

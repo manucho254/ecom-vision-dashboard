@@ -1,122 +1,169 @@
 <script>
-    export default {
-        name: "sidebar",
-        data: () => {
-            return {
-                resizeSidebar: false,
-                activeItem: "",
-                width: "70px",
-            }
-        },
-        methods: {
-            toggleItem (item) {
-                this.activeItem = item
-            },
-            toggleSidebar () {
-                if (this.resizeSidebar === true){
-                    this.resizeSidebar = false
-                }else{
-                    this.resizeSidebar = true
-                }
-                console.log(this.resizeSidebar)
-            }
-        }
-    }
+export default {
+  name: "sidebar",
+  data: () => {
+    return {
+      resizeSidebar: false,
+      activeItem: "",
+      pieChart: require("@/assets/pie-chart.svg"),
+    };
+  },
+  methods: {
+    toggleItem(item) {
+      this.activeItem = item;
+    },
+    pushTo(routePath) {
+      this.$router.push(`/${routePath}`);
+    },
+    toggleSidebar() {
+      if (this.resizeSidebar === true) {
+        this.resizeSidebar = false;
+      } else {
+        this.resizeSidebar = true;
+      }
+    },
+  },
+};
 </script>
 
 <template>
-    <div>
-        <aside v-if="!resizeSidebar" class="sidebar pt-3">
-            <div class="text-start sidebar-header">
-                <b-icon @click="toggleSidebar" icon="three-dots"></b-icon>
-            </div>
-            <div class="d-flex flex-column text-light">
-                <span class="sidebar-item" 
-                    @click="toggleItem('Overview')"
-                   :class="{'sidebar-item-active': activeItem == 'Overview'}">
-                   <i class="fa fa-solid fa-building"></i>
-                   <router-link class="router-link" to="/overview">Overview</router-link>
-                </span>
-                <span class="sidebar-item"
-                    @click="toggleItem('Reports')"
-                    :class="{'sidebar-item-active': activeItem == 'Reports'}">
-                    <i class="fa fa-duotone fa-square-poll-vertical"></i>
-                    <router-link class="router-link" to="/reports">Reports</router-link>
-                </span>
-                <span class="sidebar-item"
-                    @click="toggleItem('Products')"
-                    :class="{'sidebar-item-active': activeItem == 'Products'}">
-                   <b-icon icon="briefcase-fill"></b-icon>
-                   <router-link class="router-link" to="/products">Products</router-link>
-                </span>
-                <span class="sidebar-item"
-                    @click="toggleItem('Members')"
-                    :class="{'sidebar-item-active': activeItem == 'Members'}" >
-                    <b-icon icon="people-fill"></b-icon>
-                    <router-link class="router-link" to="/members">Members</router-link>
-                </span>
-                <span class="sidebar-item"
-                    @click="toggleItem('Teams')"
-                    :class="{'sidebar-item-active': activeItem == 'Teams'}">
-                    <i class="fa fa-solid fa-users"></i>
-                    <router-link class="router-link" to="/teams">Teams</router-link>
-                </span>
-                <span class="sidebar-item"
-                    @click="toggleItem('Message')"
-                    :class="{'sidebar-item-active': activeItem == 'Message'}">
-                   <b-icon icon="chat-right-fill"></b-icon>
-                    <router-link class="router-link" to="/messages">Messages</router-link>
-                </span>
-                <span class="sidebar-item"
-                    @click="toggleItem('Account')"
-                    :class="{'sidebar-item-active': activeItem == 'Account'}">
-                   <b-icon icon="gear-fill"></b-icon>
-                    <router-link class="router-link" to="/account">Account</router-link>
-                </span>
-            </div>
-        </aside>
+  <div>
+    <aside v-if="!resizeSidebar" class="sidebar pt-3">
+      <div class="sidebar-items">
+        <div class="text-start sidebar-header">ECOMVISION</div>
 
-        <aside :style="{'width': width}" style="tarnsition: 2s;" v-if="resizeSidebar" class="sidebar">
-            <div class="text-start sidebar-header pt-3">
-                <b-icon @click="toggleSidebar" icon="three-dots"></b-icon>
-            </div>
-            <div class="d-flex flex-column text-light">
-                <span class="sidebar-item" 
-                    @click="toggleItem('Overview')"
-                   :class="{'sidebar-item-active': activeItem == 'Overview'}">
-                   <i class="fa fa-solid fa-building"></i>
-                </span>
-                <span class="sidebar-item mt-3"
-                    @click="toggleItem('Reports')"
-                    :class="{'sidebar-item-active': activeItem == 'Reports'}">
-                    <i class="fa fa-duotone fa-square-poll-vertical"></i>
-                </span>
-                <span class="sidebar-item mt-3"
-                    @click="toggleItem('Products')"
-                    :class="{'sidebar-item-active': activeItem == 'Products'}">
-                   <b-icon icon="briefcase-fill"></b-icon>
-                </span>
-                <span class="sidebar-item mt-3"
-                    @click="toggleItem('Members')"
-                    :class="{'sidebar-item-active': activeItem == 'Members'}" >
-                    <b-icon icon="people-fill"></b-icon>
-                </span>
-                <span class="sidebar-item mt-3"
-                    @click="toggleItem('Teams')"
-                    :class="{'sidebar-item-active': activeItem == 'Teams'}">
-                    <i class="fa fa-solid fa-users"></i>
-                </span>
-                <span class="sidebar-item mt-3"
-                    @click="toggleItem('Message')"
-                    :class="{'sidebar-item-active': activeItem == 'Message'}">
-                   <b-icon icon="chat-right-fill"></b-icon>
-                </span>
-                <span class="sidebar-item mt-3"
-                    @click="toggleItem('Account')"
-                    :class="{'sidebar-item-active': activeItem == 'Account'}">
-                   <b-icon icon="gear-fill"></b-icon>
-                </span>
-            </div>
-        </aside>
-    </div>
+        <router-link
+          class="sidebar-item mb-2"
+          to="/dashboard"
+          @click="toggleItem('dashboard')"
+          :class="{ active: activeItem == 'dashboard' }"
+        >
+          <i class="fa fa-house"></i>
+          Dashboard
+        </router-link>
+
+        <span class="sidebar-title">Client Facing</span>
+
+        <router-link
+          class="sidebar-item"
+          to="/products"
+          @click="toggleItem('products')"
+          :class="{ active: activeItem == 'products' }"
+        >
+          <i class="fa fa-light fa-shopping-cart"></i>
+          Products
+        </router-link>
+
+        <router-link
+          class="sidebar-item"
+          to="/customers"
+          @click="toggleItem('customers')"
+          :class="{ active: activeItem == 'customers' }"
+        >
+          <i class="fa fa-users"></i>
+          Customers
+        </router-link>
+
+        <router-link
+          class="sidebar-item"
+          to="/transactions"
+          @click="toggleItem('transactions')"
+          :class="{ active: activeItem == 'transactions' }"
+        >
+          <b-icon icon="briefcase-fill"></b-icon>
+          Transactions
+        </router-link>
+
+        <router-link
+          class="sidebar-item router-link"
+          to="/geography"
+          @click="toggleItem('geography')"
+          :class="{ active: activeItem == 'geography' }"
+        >
+          <i class="fa fa-globe-africa"></i>
+          Geography
+        </router-link>
+
+        <span class="sidebar-title">Sales</span>
+
+        <router-link
+          class="sidebar-item router-link"
+          to="/overview"
+          @click="toggleItem('overview')"
+          :class="{ active: activeItem == 'overview' }"
+        >
+          <i class="fa fa-solid fa-users"></i>
+          Overview
+        </router-link>
+
+        <router-link
+          class="sidebar-item router-link"
+          to="/daily-sales"
+          @click="toggleItem('daily')"
+          :class="{ active: activeItem == 'daily' }"
+        >
+          <i class="fa fa-calendar-day"></i>
+          Daily
+        </router-link>
+
+        <router-link
+          class="sidebar-item router-link"
+          @click="toggleItem('monthly')"
+          :class="{ active: activeItem == 'monthly' }"
+          to="/monthly-sales"
+        >
+          <i class="fa fa-calendar-alt"></i>
+          Monthly
+        </router-link>
+
+        <router-link
+          class="sidebar-item router-link"
+          @click="toggleItem('breakdown')"
+          :class="{ active: activeItem == 'breakdown' }"
+          to="/breakdown"
+        >
+          <b-icon icon="pie-chart"></b-icon>
+          Breakdown
+        </router-link>
+
+        <span class="sidebar-title">Management</span>
+
+        <router-link
+          class="sidebar-item router-link"
+          @click="toggleItem('admin')"
+          :class="{ active: activeItem == 'admin' }"
+          to="/admin"
+        >
+          <i class="fa fa-shield"></i>
+          Admin
+        </router-link>
+
+        <router-link
+          class="sidebar-item router-link"
+          to="/performance"
+          @click="toggleItem('performance')"
+          :class="{ active: activeItem == 'performance' }"
+        >
+          <b-icon icon="gear-fill"></b-icon>
+          Performance
+        </router-link>
+      </div>
+      <div class="sidebar-footer">
+        <span
+          @click="pushTo('settings')"
+          class="d-flex gap-2 align-items-center text-decoration-none text-light bg-blueish"
+        >
+          <img
+            class="profile-avatar cursor-pointer"
+            src="@/assets/logo.png"
+            alt="profile avatar"
+          />
+          <span class="d-flex flex-column cursor-pointer">
+            <span class="font-bold">Shelly</span>
+            <span class="font-sm">Pharmacist</span>
+          </span>
+        </span>
+      </div>
+    </aside>
+  </div>
 </template>

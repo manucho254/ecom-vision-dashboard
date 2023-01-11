@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
+  <div>
     <router-view/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style lang="scss">
+
+.page-link {
+  border-radius: 30px !important;
+  width: 30px;
+  height: 30px;
+  margin: 0 2px;
+  border: none !important;
+  background-color: transparent !important;
+  color: rgb(215, 222, 230) !important;
+  font-size: 18px;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 5px
 }
 
-nav {
-  padding: 30px;
+.page-link:hover {
+  color: rgb(230, 230, 230) !important;
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.active {
+  background-color: rgb(52, 44, 116) !important;
+  color: rgb(255, 248, 248) !important;
+  border-radius: 48%;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+tbody tr:hover {
+  background: rgb(225, 225, 237);
+  opacity: 0.5;
+  cursor: pointer;
 }
-</style>
+</style>>
