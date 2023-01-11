@@ -1,4 +1,4 @@
-# learning-vue
+# Ecomvision Dashboard
 
 ## Project setup
 ```
