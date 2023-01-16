@@ -24,7 +24,7 @@ export default {
 </script>
 <template>
   <div>
-    <b-table
+    <b-table class="table-responsive"
       responsive
       :items="items"
       :fields="fields"

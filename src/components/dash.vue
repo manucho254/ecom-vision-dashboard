@@ -89,7 +89,7 @@ export default {
         <areaChart />
       </div>
     </div>
-    <div class="d-flex flex-wrap gap-2 pt-2">
+    <div class="row pt-2 gap-2 flex-wrap px-3">
       <div class="col-md-8 bg-blueish rounded">
         <Table
           :items="items"
@@ -111,7 +111,7 @@ export default {
         </div>
         <div class="d-flex justify-content-end align-items-center"></div>
       </div>
-      <div class="card col-md-4 bg-blueish rounded p-2 h-400">
+      <div class="col-md-4 card bg-blueish rounded p-2 h-400">
         <p class="text-mid">Sales by Category</p>
         <donutChart />
         <p class="text-sm mt-4">
