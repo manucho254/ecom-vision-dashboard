@@ -339,6 +339,14 @@ body {
   cursor: pointer;
 }
 
+table tbody {
+  color: rgb(244, 244, 244);
+}
+
+table thead {
+  color: rgb(244, 244, 244);
+}
+
 .loader {
   width: 50px;
   height: 50px;

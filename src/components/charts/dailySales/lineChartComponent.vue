@@ -42,14 +42,14 @@ export default {
         },
         series: [
           {
-            name: "",
+            name: "Total units",
             data: [
               0, 50000, 100000, 140000, 155000, 167000, 170000, 188000, 210000,
               222000, 240000, 250000,
             ],
           },
           {
-            name: "",
+            name: "Total sales",
             data: [
               50000, 120000, 130000, 140000, 155000, 167000, 170000, 180000, 210000,
               222000, 24000, 250000,
@@ -93,6 +93,21 @@ export default {
             borderType: "solid",
           },
         },
+        legend: {
+          position: "right",
+          markers: {
+            width: 12,
+            height: 12,
+            strokeWidth: 0,
+            strokeColor: "#fff",
+            fillColors: ["#e0c38d", "#ecd5a9"],
+            radius: 12,
+          },
+          labels: {
+            colors: "#fff",
+            useSeriesColors: false,
+          },
+        }
       },
     };
   },

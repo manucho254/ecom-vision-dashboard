@@ -39,11 +39,6 @@ export default [
     component: () => import(/* webpackChunkName: "main" */ '../views/dashboard.vue'),
     children: [
       {
-        path: '/reports',
-        name: 'Reports',
-        component: () => import(/* webpackChunkName: "reports" */ '../views/reports.vue'),
-      },
-      {
         path: '/products',
         name: 'Products',
         component: () => import(/* webpackChunkName: "products" */ '../views/products.vue'),

@@ -53,6 +53,11 @@ export default {
       currentPage: 1,
     };
   },
+  computed: {
+    rows() {
+      return this.items.length;
+    },
+  },
 };
 </script>
 
@@ -80,33 +85,33 @@ export default {
           </div>
         </div>
       </div>
-      <div class="col-md-8 rounded bg-blueish">
+      <div class="card col-md-8 rounded bg-blueish">
         <areaChart />
       </div>
     </div>
     <div class="d-flex flex-wrap gap-2 pt-2">
-        <div class="col-md-8 bg-blueish rounded">
-          <Table
-            :items="items"
-            :fields="fields"
+      <div class="col-md-8 bg-blueish rounded">
+        <Table
+          :items="items"
+          :fields="fields"
+          per-page="3"
+          :current-page="currentPage"
+        >
+        </Table>
+        <div
+          class="pagination pagination-rounded d-flex mt-2 justify-content-center justify-content-lg-end"
+        >
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            pills
             per-page="3"
-            :current-page="currentPage"
-          >
-          </Table>
-          <div
-            class="pagination pagination-rounded d-flex mt-2 justify-content-center justify-content-lg-end"
-          >
-            <b-pagination
-              v-model="currentPage"
-              :total-rows="rows"
-              pills
-              per-page="3"
-              align="right"
-            ></b-pagination>
-          </div>
+            align="right"
+          ></b-pagination>
+        </div>
         <div class="d-flex justify-content-end align-items-center"></div>
       </div>
-      <div class="col-md-4 bg-blueish rounded p-2 h-400">
+      <div class="card col-md-4 bg-blueish rounded p-2 h-400">
         <p class="text-mid">Sales by Category</p>
         <donutChart />
         <p class="text-sm mt-4">

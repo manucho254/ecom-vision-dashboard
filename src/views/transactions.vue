@@ -107,7 +107,7 @@ export default {
 <style scoped>
 .search-box {
   background-color: inherit !important;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid;
   border-radius: 0;
 }
 </style>
