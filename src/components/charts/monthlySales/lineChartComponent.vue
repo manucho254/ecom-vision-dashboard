@@ -6,21 +6,25 @@ export default {
       options: {
         chart: {
           type: "line",
-          foreColor: "#e0c38d",
+          foreColor: "#ecd5a9",
+          stacked: true,
+          dropShadow: {
+            enabled: true,
+          },
           toolbar: {
             autoSelected: "pan",
             show: false,
           },
         },
-        colors: ["#008FFB"],
+        colors: ["#ecd5a9", "#008FFB"],
         stroke: {
           width: 2,
-          colors: "#e0c38d",
+          colors: ["#ecd5a9", "#e0c38d"],
         },
         markers: {
           size: 5,
           colors: [""],
-          strokeColor: "#e0c38d",
+          strokeColor: ["#ecd5a9", "#e0c38d"],
           strokeWidth: 3,
         },
         tooltip: {
@@ -37,10 +41,17 @@ export default {
         },
         series: [
           {
-            name: "",
+            name: "Total Units",
             data: [
               0, 50000, 100000, 140000, 155000, 167000, 170000, 188000, 210000,
               222000, 240000, 250000,
+            ],
+          },
+          {
+            name: "Total sales",
+            data: [
+              50000, 250000, 130000, 180000, 200000, 167000, 170000, 180000, 210000,
+              222000, 24000, 250000,
             ],
           },
         ],
@@ -90,10 +101,25 @@ export default {
             borderType: "solid",
           },
         },
+        legend: {
+          position: "right",
+          markers: {
+            width: 12,
+            height: 12,
+            strokeWidth: 0,
+            strokeColor: "#fff",
+            fillColors: ["#e0c38d", "#ecd5a9"],
+            radius: 12,
+          },
+          labels: {
+            colors: "#fff",
+            useSeriesColors: false,
+          },
+        }
       },
     };
   },
-};
+}
 </script>
 
 <template>
