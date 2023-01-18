@@ -1,11 +1,34 @@
 <template>
   <div>
-    <router-view/>
+    <div v-if="loading">
+      <router-view />
+    </div>
+    <div
+      class="d-flex justify-content-center align-items-center"
+      style="height: 100vh;"
+      v-else
+    >
+      <span class="page-loader"></span>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+export default {
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  mounted() {
+    window.addEventListener("load", () => {
+      this.loading = !this.loading;
+    });
+  },
+};
+</script>
 
+<style lang="scss">
 .page-link {
   border-radius: 30px !important;
   width: 30px;
@@ -17,7 +40,7 @@
   font-size: 18px;
   box-shadow: none !important;
   outline: none !important;
-  padding: 5px
+  padding: 5px;
 }
 
 .page-link:hover {
@@ -35,4 +58,5 @@ tbody tr:hover {
   opacity: 0.5;
   cursor: pointer;
 }
-</style>>
+</style>
+>

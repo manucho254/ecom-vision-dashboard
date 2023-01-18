@@ -1,0 +1,67 @@
+.body-color {
+  background-color: rgb(232, 231, 231) !important;
+  color: black !important;
+}
+
+.sidebar-color {
+  background-color: rgb(240, 240, 240) !important;
+  color: black !important;
+}
+
+.sidebar-color .sidebar-items .sidebar-item {
+  color: black !important;
+}
+
+.sidebar-color span {
+  color: black !important;
+}
+
+.sidebar-color .sidebar-item:hover {
+  color: #fff !important;
+  background-color: #434343;
+  cursor: pointer;
+}
+
+.sidebar-color .sidebar-footer span {
+  background-color: inherit;
+}
+
+.search {
+  background-color: rgb(248, 247, 247) !important;
+}
+.search .search-input {
+  color: black !important;
+}
+
+.body-color table {
+  background-color: #fff !important;
+}
+
+.body-color table thead {
+  background-color: #fff !important;
+  color: rgb(24, 24, 24) !important;
+}
+
+.body-color table tbody {
+  background-color: #fff !important;
+  color: rgb(24, 24, 24) !important;
+}
+
+.body-color .search-box {
+  background-color: #fff !important;
+  color: rgb(24, 24, 24) !important;
+}
+
+.body-color input {
+  color: rgb(24, 24, 24) !important;
+}
+
+.body-color .card {
+  background-color: #fff !important;
+  color: rgb(24, 24, 24) !important;
+}
+
+.body-color .bg-blueish {
+  background-color: #fff;
+  color: rgb(24, 24, 24) !important;
+}

@@ -91,7 +91,7 @@ export default {
     </div>
     <div class="row pt-2 gap-2 flex-wrap px-3">
       <div class="col-md-8 bg-blueish rounded">
-        <Table
+        <Table class="h-345"
           :items="items"
           :fields="fields"
           per-page="3"
@@ -124,9 +124,6 @@ export default {
 </template>
 
 <style scoped>
-.h-400 {
-  height: 400px;
-}
 
 @media screen and (max-width: 600px) {
   .flex-wrap {

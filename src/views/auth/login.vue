@@ -101,7 +101,7 @@ export default {
 
               <div class="d-flex justify-content-between">
                 <span class="d-flex align-items-center gap-2">
-                  <input type="checkbox" v-model="formData.remember" />
+                  <input class="remember-me" type="checkbox" v-model="formData.remember" />
                   <span>Remember me.</span>
                 </span>
                 <router-link

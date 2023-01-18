@@ -14,6 +14,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 // custom css
 import '@/assets/css/styles.css';
+import '@/assets/css/lightmode.css';
 
 
 Vue.use(VueApexCharts)

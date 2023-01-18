@@ -39,9 +39,6 @@ export default {
 </template>
 
 <style scoped>
-.h-60vh {
-  height: 60vh !important;
-}
 
 .t-row:hover {
   background-color: rgb(221, 221, 244);

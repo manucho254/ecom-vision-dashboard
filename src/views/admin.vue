@@ -88,7 +88,7 @@ export default {
         </span>
       </div>
     </div>
-    <div class="bg-blueish rounded">
+    <div class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500">
       <Table
         :items="items"
         :fields="fields"

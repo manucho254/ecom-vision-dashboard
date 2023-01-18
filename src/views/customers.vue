@@ -51,6 +51,60 @@ export default {
           occupation: "Developer",
           role: "admin",
         },
+        {
+          id: 191,
+          name: "manucho",
+          email: "test@g.com",
+          phone_number: "+25476263629",
+          country: "KE",
+          occupation: "Developer",
+          role: "admin",
+        },
+        {
+          id: 191,
+          name: "manucho",
+          email: "test@g.com",
+          phone_number: "+25476263629",
+          country: "KE",
+          occupation: "Developer",
+          role: "admin",
+        },
+        {
+          id: 191,
+          name: "manucho",
+          email: "test@g.com",
+          phone_number: "+25476263629",
+          country: "KE",
+          occupation: "Developer",
+          role: "admin",
+        },
+        {
+          id: 191,
+          name: "manucho",
+          email: "test@g.com",
+          phone_number: "+25476263629",
+          country: "KE",
+          occupation: "Developer",
+          role: "admin",
+        },
+        {
+          id: 191,
+          name: "manucho",
+          email: "test@g.com",
+          phone_number: "+25476263629",
+          country: "KE",
+          occupation: "Developer",
+          role: "admin",
+        },
+        {
+          id: 191,
+          name: "manucho",
+          email: "test@g.com",
+          phone_number: "+25476263629",
+          country: "KE",
+          occupation: "Developer",
+          role: "admin",
+        },
       ],
       currentPage: 1,
       searchInput: "",
@@ -88,11 +142,11 @@ export default {
         </span>
       </div>
     </div>
-    <div class="bg-blueish rounded">
+    <div class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500">
       <Table
         :items="items"
         :fields="fields"
-        per-page="3"
+        per-page="8"
         :current-page="currentPage"
       >
       </Table>
@@ -103,7 +157,7 @@ export default {
           v-model="currentPage"
           :total-rows="rows"
           pills
-          per-page="3"
+          per-page="8"
           align="right"
         ></b-pagination>
       </div>
@@ -117,4 +171,5 @@ export default {
   border-bottom: 1px solid;
   border-radius: 0;
 }
+
 </style>

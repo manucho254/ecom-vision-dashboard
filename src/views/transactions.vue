@@ -79,11 +79,11 @@ export default {
         </span>
       </div>
     </div>
-    <div class="bg-blueish rounded">
+    <div class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500">
       <Table
         :items="items"
         :fields="fields"
-        per-page="3"
+        per-page="8"
         :current-page="currentPage"
       >
       </Table>
@@ -94,7 +94,7 @@ export default {
           v-model="currentPage"
           :total-rows="rows"
           pills
-          per-page="3"
+          per-page="8"
           align="right"
         ></b-pagination>
       </div>
