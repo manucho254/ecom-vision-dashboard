@@ -159,7 +159,7 @@ export default {
             alt="profile avatar"
           />
           <span class="d-flex flex-column cursor-pointer">
-            <span class="font-bold">Shelly</span>
+            <span class="font-bold">Manucho</span>
             <span class="font-sm">Pharmacist</span>
           </span>
         </span>
