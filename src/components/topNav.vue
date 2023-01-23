@@ -1,11 +1,11 @@
 <script>
 import PageMessage from "@/components/pageMessageComponent.vue";
+import pageTheme from "@/components/pageThemeComponent.vue";
 export default {
   name: "topNavComponent",
-  components: { PageMessage },
+  components: { PageMessage, pageTheme },
   data: () => {
     return {
-      colorMode: "dark",
       show: false,
       dropDownShow: false,
     };
@@ -25,31 +25,7 @@ export default {
     pushTo(urlPath) {
       this.$router.push(urlPath);
     },
-    darkModeToggle() {
-      let sideBar = document.querySelector(".sidebar");
-      let body = document.querySelector("body");
-      let searchBox = document.querySelector(".search-box");
-      let table = document.querySelector("table");
-      let drop = document.querySelector(".drop");
-
-      if (this.colorMode === "dark") {
-        this.colorMode = "light";
-        body.classList.add("body-color");
-        sideBar.classList.add("sidebar-color");
-        searchBox.classList.add("search");
-        table.classList.add("table-light");
-        drop.classList.add("text-dark");
-        drop.classList.remove("text-light");
-      } else {
-        this.colorMode = "dark";
-        body.classList.remove("body-color");
-        sideBar.classList.remove("sidebar-color");
-        searchBox.classList.remove("search");
-        table.classList.remove("table-light");
-        drop.classList.remove("text-dark");
-        drop.classList.add("text-light");
-      }
-    },
+    
   },
 };
 </script>
@@ -69,10 +45,7 @@ export default {
         </div>
       </div>
       <div class="d-flex align-items-center gap-4">
-        <span class="cursor-pointer" @click="darkModeToggle">
-          <i v-if="colorMode === 'light'" class="fa fa-moon"></i>
-          <i v-if="colorMode === 'dark'" class="fa fa-sun"></i>
-        </span>
+        <pageTheme/>
         <span class="cursor-pointer" @click="pushTo('/settings')">
           <i class="fa fa-gear"></i>
         </span>

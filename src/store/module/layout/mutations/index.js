@@ -1,5 +1,8 @@
 export default {
-    UPDATE_SIDEBAR (state, payload){
-        return state.showSidebar = payload
+    updateSidebar (state, payload){
+        state.showSidebar = payload
+    },
+    updateTheme (state, payload) {
+        state.theme = payload
     }
 }

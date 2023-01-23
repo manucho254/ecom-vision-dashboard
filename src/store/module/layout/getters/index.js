@@ -1,5 +1,8 @@
 export default {
-    GET_SIDEBAR (state) {
+    getSidebar (state) {
         return state.showSidebar
+    },
+    getTheme (state) {
+        return state.theme
     }
 }

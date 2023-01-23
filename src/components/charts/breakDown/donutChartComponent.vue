@@ -1,6 +1,10 @@
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "breakDownDonutChartComponent",
+  computed: {
+    ...mapGetters({ getTheme: "layout/getTheme" }),
+  },
   data: () => {
     return {
       pieOptions: {
@@ -23,7 +27,7 @@ export default {
             radius: 12,
           },
           labels: {
-            colors: "#fff",
+            colors: [],
             useSeriesColors: false,
           },
         },
@@ -64,6 +68,19 @@ export default {
       },
     };
   },
+  methods: {
+  },
+  watch: {
+    getTheme (currentTheme) {
+      if (currentTheme === "light"){
+        this.pieOptions.legend.labels.colors = []
+        this.pieOptions.legend.labels.colors.push("#000")
+      }else{
+        this.pieOptions.legend.labels.colors = []
+        this.pieOptions.legend.labels.colors.push("#fff")
+      }
+    }
+  }
 };
 </script>
 <template>

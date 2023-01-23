@@ -1,6 +1,10 @@
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "dailySalesLineChartComponent",
+  computed: {
+    ...mapGetters({ getTheme: "layout/getTheme" }),
+  },
   data: () => {
     return {
       options: {
@@ -25,14 +29,14 @@ export default {
         markers: {
           size: 5,
           colors: [""],
-          strokeColor: ["#ecd5a9", "#e0c38d"],
+          strokeColor: [],
           strokeWidth: 3,
         },
         tooltip: {
           theme: "dark",
         },
         grid: {
-          borderColor: "#fff",
+          borderColor: "",
           clipMarkers: false,
           yaxis: {
             lines: {
@@ -51,8 +55,8 @@ export default {
           {
             name: "Total sales",
             data: [
-              50000, 120000, 130000, 140000, 155000, 167000, 170000, 180000, 210000,
-              222000, 24000, 250000,
+              50000, 120000, 130000, 140000, 155000, 167000, 170000, 180000,
+              210000, 222000, 24000, 250000,
             ],
           },
         ],
@@ -74,6 +78,19 @@ export default {
             "November",
             "December",
           ],
+          tickAmount: 5,
+          axisBorder: {
+            show: true,
+            color: "#1d145a",
+            height: 1.2,
+            offsetX: 0,
+            offsetY: 0,
+          },
+          axisTicks: {
+            show: true,
+            color: "#1d145a",
+            borderType: "solid",
+          },
         },
         yaxis: {
           title: {
@@ -83,13 +100,14 @@ export default {
           tickAmount: 5,
           axisBorder: {
             show: true,
-            color: "#fff",
+            color: "#1d145a",
             width: 1.2,
             offsetX: -1,
             offsetY: -10,
           },
           axisTicks: {
             show: true,
+            color: "#1d145a",
             borderType: "solid",
           },
         },
@@ -104,12 +122,35 @@ export default {
             radius: 12,
           },
           labels: {
-            colors: "#fff",
+            colors: [],
             useSeriesColors: false,
           },
-        }
+        },
       },
     };
+  },
+  watch: {
+    getTheme(currentTheme) {
+      if (currentTheme === "light") {
+        this.options.legend.labels.colors = [];
+        this.options.markers.strokeColor = [];
+        this.options.stroke.colors = [];
+        this.options.legend.labels.colors.push("#000");
+        this.options.yaxis.axisBorder["color"] = "#000";
+        this.options.stroke.colors.push("#fff", "#000")
+        this.options.markers.strokeColor.push("#ecd5a9", "#e0c38d");
+      } else {
+        this.options.legend.labels.colors = [];
+        this.options.markers.strokeColor = [];
+        this.options.stroke.colors = [];
+        this.options.grid["borderColor"] = "#fff";
+        this.options.yaxis.axisBorder["color"] = "#fff";
+        this.options.legend.labels.colors.push("#fff");
+        this.options.markers.strokeColor.push("#ecd5a9", "#e0c38d");
+        this.options.stroke.colors.push("#ecd5a9", "#e0c38d")
+      }
+      console.log(this.options.markers.strokeColor);
+    },
   },
 };
 </script>
