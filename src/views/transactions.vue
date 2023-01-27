@@ -49,9 +49,10 @@ export default {
   methods: {
     searchTransaction() {
       if (this.searchInput !== "" || this.searchInput !== null) {
-        this.items = this.items.filter((item) =>
+        let filteredItems = this.items.filter((item) =>
           String(item.cost).includes(String(this.searchInput))
-        );
+        )
+        this.items = filteredItems
       }
     },
   },

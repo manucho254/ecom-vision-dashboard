@@ -1,12 +1,11 @@
 <script>
-import {
-  required,
-  email,
-} from "vuelidate/lib/validators";
+import { required, email } from "vuelidate/lib/validators";
 export default {
   data: () => {
     return {
       googleImg: require("@/assets/google.svg"),
+      loginSuccess: false,
+      buttonLoader: false,
       formData: {
         email: "test@test.com",
         password: "testing",
@@ -18,15 +17,20 @@ export default {
     formData: {
       email: { required, email },
       password: {
-        required
+        required,
       },
     },
   },
   methods: {
     login() {
       this.$v.$touch();
+      this.buttonLoader = !this.buttonLoader;
       if (!this.$v.$invalid) {
-        this.$router.push("/dashboard");
+        this.loginSuccess = !this.loginSuccess;
+        setTimeout(()=> {
+          this.$router.push("/dashboard");
+          this.buttonLoader = !this.buttonLoader;
+        }, 2000)
       }
     },
   },
@@ -45,7 +49,11 @@ export default {
             our service.
           </span>
           <div>
-            <form @submit.prevent="login" class="d-flex flex-column gap-3">
+            <span v-if="loginSuccess" class="login-success">
+              Authentication successful...
+            </span>
+
+            <form @submit.prevent="login" class="d-flex flex-column gap-3 mt-2">
               <div
                 class="form-box"
                 :class="{ 'is-invalid': $v.formData.email.$error }"
@@ -101,7 +109,11 @@ export default {
 
               <div class="d-flex justify-content-between">
                 <span class="d-flex align-items-center gap-2">
-                  <input class="remember-me" type="checkbox" v-model="formData.remember" />
+                  <input
+                    class="remember-me"
+                    type="checkbox"
+                    v-model="formData.remember"
+                  />
                   <span>Remember me.</span>
                 </span>
                 <router-link
@@ -111,7 +123,14 @@ export default {
                   Forgot password.
                 </router-link>
               </div>
-              <button type="submit" class="login-button">Login</button>
+              <button type="submit" class="login-button">
+                <span
+                  v-if="buttonLoader"
+                  class="spinner-border text-success"
+                  role="status"
+                ></span>
+                Login
+              </button>
 
               <button
                 type="submit"
@@ -142,3 +161,12 @@ export default {
     </div>
   </div>
 </template>
+
+<style scoped>
+.spinner-border {
+  width: 20px;
+  height: 20px;
+  color: rgb(202, 222, 202) !important;
+}
+
+</style>

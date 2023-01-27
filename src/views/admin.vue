@@ -59,9 +59,10 @@ export default {
   methods: {
     searchAdmin() {
       if (this.searchInput !== "" || this.searchInput !== null) {
-        this.items.filter((item) =>
-          String(item.cost).includes(String(this.searchInput))
+        let filteredItems = this.items.filter((item) =>
+          String(item.name).includes(String(this.searchInput))
         );
+        this.items = filteredItems
       }
     },
   },

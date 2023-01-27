@@ -149,7 +149,6 @@ export default {
         this.options.markers.strokeColor.push("#ecd5a9", "#e0c38d");
         this.options.stroke.colors.push("#ecd5a9", "#e0c38d")
       }
-      console.log(this.options.markers.strokeColor);
     },
   },
 };

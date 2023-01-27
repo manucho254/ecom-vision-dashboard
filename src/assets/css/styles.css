@@ -330,6 +330,17 @@ body {
   background-color: #5743c7;
 }
 
+.login-success{
+  background-color: rgb(129, 195, 129);
+  color: rgb(11, 11, 11);
+  display: inline-block;
+  width: 410px;
+  height: 30px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2px;
+}
+
 .is-invalid {
   display: flex;
   border: 0.5px solid rgb(242, 62, 62);

@@ -112,11 +112,13 @@ export default {
   },
   methods: {
     searchCustomer() {
+      let filteredItems = this.items
       if (this.searchInput !== "" || this.searchInput !== null) {
-        this.items.filter((item) =>
-          String(item.cost).includes(String(this.searchInput))
-        );
+        filteredItems = this.items.filter((item) =>
+          String(item.name).includes(String(this.searchInput))
+        )
       }
+      this.items = filteredItems
     },
   },
   computed: {
