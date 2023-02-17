@@ -1,5 +1,7 @@
 <script>
 import Table from "@/components/tableComponent.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "performanceView",
   components: { Table },
@@ -8,56 +10,37 @@ export default {
       fields: [
         { key: "id", sortable: true },
         { key: "userid", sortable: true },
+        { key: "name", sortable: true },
         { key: "createdat", sortable: true },
         { key: "ofproducts", sortable: true },
         { key: "cost", sortable: true },
       ],
-      items: [
-        {
-          id: 120,
-          userid: 20,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 230,
-        },
-        {
-          id: 121,
-          userid: 21,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 200,
-        },
-        {
-          id: 122,
-          userid: 22,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 320,
-        },
-        {
-          id: 12,
-          userid: 23,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 333,
-        },
-      ],
+      items: [],
       currentPage: 1,
       searchInput: "",
     };
   },
+  mounted ( ) {
+    this.$store.dispatch("dashboard/fetchProducts")
+    this.items = this.getProducts
+  },
   methods: {
     searchPerformance() {
-      if (this.searchInput !== "" || this.searchInput !== null) {
-        this.items = this.items.filter((item) =>
-          String(item.cost).includes(String(this.searchInput))
+      if (this.searchInput !== "") {
+        this.items = this.getProducts.filter(
+          (item) =>  {
+            return String(item.name).includes(String(this.searchInput))
+          }
         );
+      } else {
+        this.items = this.getProducts;
       }
     },
   },
   computed: {
+    ...mapGetters({getProducts: "dashboard/getProducts"}),
     rows() {
-      return this.items.length;
+      return this.getProducts.length;
     },
   },
 };

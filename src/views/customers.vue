@@ -1,5 +1,7 @@
 <script>
 import Table from "@/components/tableComponent.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "customersView",
   components: { Table },
@@ -14,116 +16,32 @@ export default {
         { key: "occupation", sortable: true },
         { key: "role", sortable: true },
       ],
-      items: [
-        {
-          id: 123,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 121,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 125,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-        {
-          id: 191,
-          name: "manucho",
-          email: "test@g.com",
-          phone_number: "+25476263629",
-          country: "KE",
-          occupation: "Developer",
-          role: "admin",
-        },
-      ],
+      items: [],
       currentPage: 1,
       searchInput: "",
     };
   },
+  mounted() {
+    this.$store.dispatch("dashboard/fetchCustomers");
+    this.items = this.getCustomers;
+  },
   methods: {
     searchCustomer() {
-      let filteredItems = this.items
-      if (this.searchInput !== "" || this.searchInput !== null) {
-        filteredItems = this.items.filter((item) =>
-          String(item.name).includes(String(this.searchInput))
-        )
+      if (this.searchInput !== "") {
+        this.items = this.getCustomers.filter(
+          (item) =>  {
+            return String(item.name).includes(String(this.searchInput))
+          }
+        );
+      } else {
+        this.items = this.getCustomers;
       }
-      this.items = filteredItems
     },
   },
   computed: {
+    ...mapGetters({ getCustomers: "dashboard/getCustomers" }),
     rows() {
-      return this.items.length;
+      return this.getCustomers.length;
     },
   },
 };
@@ -144,7 +62,9 @@ export default {
         </span>
       </div>
     </div>
-    <div class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500">
+    <div
+      class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500"
+    >
       <Table
         :items="items"
         :fields="fields"
@@ -173,5 +93,4 @@ export default {
   border-bottom: 1px solid;
   border-radius: 0;
 }
-
 </style>
