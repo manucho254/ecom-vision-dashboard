@@ -1,5 +1,6 @@
 <script>
 import Loader from "@/components/loadingComponent.vue";
+
 export default {
   name: "ProductsView",
   components: { Loader },

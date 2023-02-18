@@ -13,7 +13,6 @@ export default {
         { key: "email", sortable: true },
         { key: "phone_number", sortable: true },
         { key: "country", sortable: true },
-        { key: "occupation", sortable: true },
         { key: "role", sortable: true },
       ],
       items: [],
@@ -22,26 +21,26 @@ export default {
     };
   },
   mounted () {
-    this.$store.dispatch("dashboard/fetchCustomers")
-    this.items = this.getCustomers
+    this.$store.dispatch("dashboard/fetchAdmins")
+    this.items = this.getAdmins
   },
   methods: {
     searchAdmin() {
       if (this.searchInput !== "") {
-        this.items = this.getCustomers.filter(
+        this.items = this.getAdmins.filter(
           (item) =>  {
             return String(item.name).includes(String(this.searchInput))
           }
         );
       } else {
-        this.items = this.getCustomers;
+        this.items = this.getAdmins;
       }
     },
   },
   computed: {
-    ...mapGetters({ getCustomers: "dashboard/getCustomers"}),
+    ...mapGetters({ getAdmins: "dashboard/getAdmins"}),
     rows() {
-      return this.getCustomers.length;
+      return this.getAdmins.length;
     },
   },
 };

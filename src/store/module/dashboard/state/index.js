@@ -1,5 +1,6 @@
-export default{
-    customers: [],
-    products: [],
-    
-}
+export default {
+  customers: [],
+  products: [],
+  admins: [],
+  transactions: [],
+};

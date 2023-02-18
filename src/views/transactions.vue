@@ -1,5 +1,7 @@
 <script>
 import Table from "@/components/tableComponent.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "transactionsView",
   components: { Table },
@@ -7,58 +9,37 @@ export default {
     return {
       fields: [
         { key: "id", sortable: true },
-        { key: "userid", sortable: true },
-        { key: "createdat", sortable: true },
-        { key: "ofproducts", sortable: true },
-        { key: "cost", sortable: true },
+        { key: "transaction_id", sortable: true },
+        { key: "customer", sortable: true },
+        { key: "country", sortable: true },
+        { key: "createdAt", sortable: true },
       ],
-      items: [
-        {
-          id: 120,
-          userid: 20,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 230,
-        },
-        {
-          id: 121,
-          userid: 21,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 200,
-        },
-        {
-          id: 122,
-          userid: 22,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 320,
-        },
-        {
-          id: 12,
-          userid: 23,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 333,
-        },
-      ],
+      items: [],
       currentPage: 1,
       searchInput: "",
     };
   },
+  mounted() {
+    this.$store.dispatch("dashboard/fetchTransactions");
+    this.items = this.getTransactions;
+  },
   methods: {
     searchTransaction() {
-      if (this.searchInput !== "" || this.searchInput !== null) {
-        let filteredItems = this.items.filter((item) =>
-          String(item.cost).includes(String(this.searchInput))
-        )
-        this.items = filteredItems
+      if (this.searchInput !== "") {
+        this.items = this.getTransactions.filter(
+          (item) =>  {
+            return String(item.customer).includes(String(this.searchInput))
+          }
+        );
+      } else {
+        this.items = this.getTransactions;
       }
     },
   },
   computed: {
+    ...mapGetters({ getTransactions: "dashboard/getTransactions" }),
     rows() {
-      return this.items.length;
+      return this.getTransactions.length;
     },
   },
 };
@@ -80,7 +61,9 @@ export default {
         </span>
       </div>
     </div>
-    <div class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500">
+    <div
+      class="bg-blueish rounded d-flex flex-column justify-content-between gap-2 h-500"
+    >
       <Table
         :items="items"
         :fields="fields"

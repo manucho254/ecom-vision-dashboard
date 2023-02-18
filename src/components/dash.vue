@@ -2,6 +2,9 @@
 import areaChart from "./charts/dashboard/areaChartComponent.vue";
 import donutChart from "./charts/dashboard/donutChartComponent.vue";
 import Table from "@/components/tableComponent.vue";
+import { mapGetters } from "vuex";
+
+
 export default {
   name: "DashComponent",
   components: { areaChart, donutChart, Table },
@@ -9,41 +12,12 @@ export default {
     return {
       fields: [
         { key: "id", sortable: true },
-        { key: "userid", sortable: true },
-        { key: "createdat", sortable: true },
-        { key: "ofproducts", sortable: true },
+        { key: "name", sortable: true },
+        { key: "customer", sortable: true },
         { key: "cost", sortable: true },
+        { key: "createdAt", sortable: true },
       ],
-      items: [
-        {
-          id: 120,
-          userid: 20,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 230,
-        },
-        {
-          id: 121,
-          userid: 21,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 200,
-        },
-        {
-          id: 122,
-          userid: 22,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 320,
-        },
-        {
-          id: 12,
-          userid: 23,
-          createdat: "test@g.com",
-          ofproducts: "+25476263629",
-          cost: 333,
-        },
-      ],
+      items: [],
       accountingData: [
         { message: "Total Customers", total: 5123, percentage: 21 },
         { message: "Sales Today", total: 5023, percentage: 21 },
@@ -53,9 +27,14 @@ export default {
       currentPage: 1,
     };
   },
+  mounted () {
+    this.$store.dispatch("dashboard/fetchProducts");
+    this.items = this.getProducts
+  },
   computed: {
+    ...mapGetters({ getProducts: "dashboard/getProducts" }),
     rows() {
-      return this.items.length;
+      return this.getProducts.length;
     },
   },
 };
@@ -91,7 +70,8 @@ export default {
     </div>
     <div class="row pt-2 gap-2 flex-wrap px-3">
       <div class="col-md-8 bg-blueish rounded">
-        <Table class="h-345"
+        <Table
+          class="h-345"
           :items="items"
           :fields="fields"
           per-page="3"
@@ -124,7 +104,6 @@ export default {
 </template>
 
 <style scoped>
-
 @media screen and (max-width: 600px) {
   .flex-wrap {
     flex-wrap: wrap !important;
