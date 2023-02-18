@@ -20,16 +20,15 @@ export default {
             show: false,
           },
         },
-        colors: ["#008FFB", "#e0c38d"],
+        colors: ["#ecd5a9", "#008FFB"],
         stroke: {
           width: 2,
-          curve: "smooth",
           colors: ["#ecd5a9", "#e0c38d"],
         },
         markers: {
           size: 5,
           colors: [""],
-          strokeColor: [],
+          strokeColor: ["#ecd5a9", "#e0c38d"],
           strokeWidth: 3,
         },
         tooltip: {
@@ -131,24 +130,7 @@ export default {
   },
   watch: {
     getTheme(currentTheme) {
-      if (currentTheme === "light") {
-        this.options.legend.labels.colors = [];
-        this.options.markers.strokeColor = [];
-        this.options.stroke.colors = [];
-        this.options.legend.labels.colors.push("#000");
-        this.options.yaxis.axisBorder["color"] = "#000";
-        this.options.stroke.colors.push("#fff", "#000")
-        this.options.markers.strokeColor.push("#ecd5a9", "#e0c38d");
-      } else {
-        this.options.legend.labels.colors = [];
-        this.options.markers.strokeColor = [];
-        this.options.stroke.colors = [];
-        this.options.grid["borderColor"] = "#fff";
-        this.options.yaxis.axisBorder["color"] = "#fff";
-        this.options.legend.labels.colors.push("#fff");
-        this.options.markers.strokeColor.push("#ecd5a9", "#e0c38d");
-        this.options.stroke.colors.push("#ecd5a9", "#e0c38d")
-      }
+      console.log(currentTheme)
     },
   },
 };
