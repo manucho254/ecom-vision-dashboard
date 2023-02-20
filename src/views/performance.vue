@@ -9,11 +9,10 @@ export default {
     return {
       fields: [
         { key: "id", sortable: true },
-        { key: "userid", sortable: true },
         { key: "name", sortable: true },
-        { key: "createdat", sortable: true },
-        { key: "ofproducts", sortable: true },
+        { key: "customer", sortable: true },
         { key: "cost", sortable: true },
+        { key: "createdAt", sortable: true },
       ],
       items: [],
       currentPage: 1,
