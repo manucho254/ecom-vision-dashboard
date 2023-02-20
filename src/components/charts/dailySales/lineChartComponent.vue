@@ -81,13 +81,13 @@ export default {
           axisBorder: {
             show: true,
             color: "#1d145a",
-            height: 1.2,
+            height: 2,
             offsetX: 0,
             offsetY: 0,
           },
           axisTicks: {
             show: true,
-            color: "#1d145a",
+            color: "#fff",
             borderType: "solid",
           },
         },
@@ -100,13 +100,13 @@ export default {
           axisBorder: {
             show: true,
             color: "#1d145a",
-            width: 1.2,
+            width: 2,
             offsetX: -1,
             offsetY: -10,
           },
           axisTicks: {
             show: true,
-            color: "#1d145a",
+            color: "#fff",
             borderType: "solid",
           },
         },
@@ -130,7 +130,7 @@ export default {
   },
   watch: {
     getTheme(currentTheme) {
-      console.log(currentTheme)
+      console.log(currentTheme);
     },
   },
 };

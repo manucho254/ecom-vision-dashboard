@@ -25,6 +25,7 @@ body {
 }
 
 .main {
+  padding-bottom: 20px;
   max-height: 600px;
   overflow-y: scroll;
 }
@@ -452,6 +453,7 @@ table thead {
   }
 
   .main {
+    padding-bottom: 20px;
     overflow: scroll;
     height: 600px;
   }

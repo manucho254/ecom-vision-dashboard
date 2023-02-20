@@ -38,7 +38,7 @@ export default {
         },
         markers: {
           size: 5,
-          colors: [""],
+          colors: [],
           strokeColor: "#e0c38d",
           strokeWidth: 3,
         },

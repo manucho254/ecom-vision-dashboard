@@ -1,9 +1,11 @@
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "overviewLineChartComponent",
-  data: () => {
-    return {
-      options: {
+  computed: {
+    ...mapGetters({ getTheme: "layout/getTheme" }),
+    options() {
+      return {
         chart: {
           type: "line",
           foreColor: "#e0c38d",
@@ -46,6 +48,19 @@ export default {
           },
         ],
         xaxis: {
+          axisBorder: {
+            show: true,
+            color: "#1d145a",
+            height: 2,
+            width: "100%",
+            offsetX: 0,
+            offsetY: 0,
+          },
+          axisTicks: {
+            show: true,
+            color: "#fff",
+            borderType: "solid",
+          },
           categories: [
             "January",
             "February",
@@ -62,25 +77,34 @@ export default {
           ],
         },
         yaxis: {
-            title: {
-                text: 'Total Units for Year'
-              },
+          title: {
+            text: "Total Units for Year",
+          },
           min: 0,
           tickAmount: 5,
           axisBorder: {
             show: true,
-            color: "#fff",
-            width: 1.2,
+            color: "#1d145a",
+            width: 2,
             offsetX: -1,
             offsetY: -10,
           },
           axisTicks: {
             show: true,
+            color: "#fff",
             borderType: "solid",
           },
         },
-      },
-    };
+      };
+    },
+  },
+  data: () => {
+    return {};
+  },
+  watch: {
+    getTheme(currentTheme) {
+      console.log(currentTheme);
+    },
   },
 };
 </script>

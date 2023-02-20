@@ -23,7 +23,7 @@ export default {
             radius: 12,
           },
           labels: {
-            colors: "#fff",
+            colors: [],
             useSeriesColors: false,
           },
         },

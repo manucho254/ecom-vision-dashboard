@@ -50,8 +50,8 @@ export default {
           {
             name: "Total sales",
             data: [
-              50000, 250000, 130000, 180000, 200000, 167000, 170000, 180000, 210000,
-              222000, 24000, 250000,
+              50000, 250000, 130000, 180000, 200000, 167000, 170000, 180000,
+              210000, 222000, 24000, 250000,
             ],
           },
         ],
@@ -65,6 +65,19 @@ export default {
           },
         ],
         xaxis: {
+          tickAmount: 5,
+          axisBorder: {
+            show: true,
+            color: "#1d145a",
+            height: 2,
+            offsetX: 0,
+            offsetY: 0,
+          },
+          axisTicks: {
+            show: true,
+            color: "#fff",
+            borderType: "solid",
+          },
           title: {
             text: "Month",
           },
@@ -91,13 +104,14 @@ export default {
           tickAmount: 5,
           axisBorder: {
             show: true,
-            color: "#fff",
-            width: 1.2,
+            color: "#1d145a",
+            width: 2,
             offsetX: -1,
             offsetY: -10,
           },
           axisTicks: {
             show: true,
+            color: "#fff",
             borderType: "solid",
           },
         },
@@ -112,14 +126,14 @@ export default {
             radius: 12,
           },
           labels: {
-            colors: "#fff",
+            colors: [],
             useSeriesColors: false,
           },
-        }
+        },
       },
     };
   },
-}
+};
 </script>
 
 <template>
