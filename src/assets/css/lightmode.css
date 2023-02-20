@@ -6,6 +6,7 @@
 .sidebar-color {
   background-color: rgb(240, 240, 240) !important;
   color: black !important;
+  border: 1px rgb(203, 202, 202) solid;
 }
 
 .sidebar-color .sidebar-items .sidebar-item {

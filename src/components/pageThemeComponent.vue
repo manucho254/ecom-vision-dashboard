@@ -3,6 +3,9 @@ import { mapGetters, mapMutations } from "vuex";
 
 export default {
   name: "PageThemeComponent",
+  computed: {
+    ...mapGetters({ getTheme: "layout/getTheme" }),
+  },
   methods: {
     ...mapMutations({ updateTheme: "layout/updateTheme" }),
     darkModeToggle() {
@@ -30,9 +33,6 @@ export default {
         drop.classList.add("text-light");
       }
     },
-  },
-  computed: {
-    ...mapGetters({ getTheme: "layout/getTheme" }),
   },
 };
 </script>
