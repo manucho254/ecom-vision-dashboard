@@ -74,7 +74,7 @@ export default {
           Transactions
         </router-link>
 
-        <router-link
+        <!-- <router-link
           class="sidebar-item router-link"
           to="/geography"
           @click="toggleItem('geography')"
@@ -82,7 +82,7 @@ export default {
         >
           <i class="fa fa-globe-africa"></i>
           Geography
-        </router-link>
+        </router-link> -->
 
         <span class="sidebar-title">Sales</span>
 
