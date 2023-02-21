@@ -1,4 +1,4 @@
 export default {
     showSidebar: false,
-    theme: "dark",
+    theme: "light",
 }
