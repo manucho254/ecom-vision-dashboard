@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -10,6 +11,13 @@ export default {
         lastName: "",
       },
     };
+  },
+  mounted() {
+    this.$store.dispatch("auth/fetchUser");
+    this.formData = this.getUser
+  },
+  computed: {
+    ...mapGetters({ getUser: "auth/getUser" }),
   },
   methods: {
     getFile(e) {
@@ -49,7 +57,7 @@ export default {
             accept="image/jpeg, image/png"
           />
         </div>
-      </div>   
+      </div>
     </div>
     <div class="row g-2">
       <div class="col-md-4 d-flex flex-column">
@@ -94,7 +102,7 @@ export default {
 
 input {
   height: 35px;
-  padding: 0;
+  padding: 10px;
   border: black 1px solid;
   border-radius: 5px;
 }

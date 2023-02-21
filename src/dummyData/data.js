@@ -1,3 +1,10 @@
+const user = {
+  email: "test@g.com",
+  username: "manucho",
+  firstName: "rada",
+  lastName: "msee",
+};
+
 const customers = [
   {
     id: 121,
@@ -262,4 +269,4 @@ const transactions = [
   },
 ];
 
-export { customers, products, admins, transactions };
+export { customers, products, admins, transactions, user };
