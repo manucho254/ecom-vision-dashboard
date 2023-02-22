@@ -1,5 +1,6 @@
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   data() {
     return {
@@ -14,12 +15,13 @@ export default {
   },
   mounted() {
     this.$store.dispatch("auth/fetchUser");
-    this.formData = this.getUser
+    this.formData = this.getUser;
   },
   computed: {
     ...mapGetters({ getUser: "auth/getUser" }),
   },
   methods: {
+    ...mapMutations({ setUser: "auth/setUser" }),
     getFile(e) {
       const { files } = e.target;
       if (files && files[0]) {
@@ -37,6 +39,10 @@ export default {
         };
         reader.readAsArrayBuffer(files[0]);
       }
+    },
+    updateProfile() {
+      let data = { ...this.formData };
+      this.setUser(data);
     },
   },
 };
@@ -77,7 +83,9 @@ export default {
         <input type="text" v-model="formData.lastName" class="form-class" />
       </div>
       <div class="d-flex align-items-center justify-content-center">
-        <button class="btn btn-light">Update Profile</button>
+        <button class="btn btn-light" @click="updateProfile">
+          Update Profile
+        </button>
       </div>
     </div>
   </div>
