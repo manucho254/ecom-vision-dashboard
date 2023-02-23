@@ -23,7 +23,5 @@ export default {
   saveTokens,
   getAccessToken,
   getRefreshToken,
-  destroyTokens,
-  saveUserData,
-  getUserData,
+  destroyTokens
 };

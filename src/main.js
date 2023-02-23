@@ -12,6 +12,11 @@ import store from "@/store"
 // third party css
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import VueToast from 'vue-toast-notification';
+// Import one of the available themes
+//import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
+
 
 // custom css
 import '@/assets/css/styles.css';
@@ -22,7 +27,9 @@ Vue.use(VueApexCharts)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(Vuelidate)
+Vue.use(VueToast);
 Vue.component('apexchart', VueApexCharts)
+
 
 Vue.config.productionTip = false
 

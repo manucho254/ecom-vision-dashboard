@@ -27,6 +27,9 @@ export default {
       this.buttonLoader = !this.buttonLoader;
       if (!this.$v.$invalid) {
         this.loginSuccess = !this.loginSuccess;
+        this.$toast.success("Logged in successfully.", {
+          position: "top-right", duration: 2000
+        });
         setTimeout(()=> {
           this.$router.push("/dashboard");
           this.buttonLoader = !this.buttonLoader;
@@ -49,9 +52,9 @@ export default {
             our service.
           </span>
           <div>
-            <span v-if="loginSuccess" class="login-success">
+            <!-- <span v-if="loginSuccess" class="login-success">
               Authentication successful...
-            </span>
+            </span> -->
 
             <form @submit.prevent="login" class="d-flex flex-column gap-3 mt-2">
               <div

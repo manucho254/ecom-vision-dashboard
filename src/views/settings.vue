@@ -1,5 +1,4 @@
 <script>
-import { getUserData } from "@/services/jwt.service";
 import countries from "@/dummyData/countries";
 import { mapGetters, mapMutations } from "vuex";
 
@@ -48,13 +47,16 @@ export default {
     updateProfile() {
       let data = { ...this.formData };
       this.setUser(data);
+      this.$toast.success("Profile updated successfully.", {
+        position: "top-right",
+      });
     },
     getLanguage() {
       console.log(this.formData.language);
     },
-    getCountry () {
+    getCountry() {
       console.log(this.formData.country);
-    }
+    },
   },
 };
 </script>
