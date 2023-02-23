@@ -3,6 +3,8 @@ const user = {
   username: "manucho",
   firstName: "rada",
   lastName: "msee",
+  language: "English",
+  country: "Kenya"
 };
 
 const customers = [

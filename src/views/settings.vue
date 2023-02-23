@@ -1,15 +1,20 @@
 <script>
+import { getUserData } from "@/services/jwt.service";
+import countries from "@/dummyData/countries";
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
   data() {
     return {
       image: {},
+      countries: countries,
       formData: {
         email: "",
         username: "",
         firstName: "",
         lastName: "",
+        language: "",
+        country: "",
       },
     };
   },
@@ -44,6 +49,12 @@ export default {
       let data = { ...this.formData };
       this.setUser(data);
     },
+    getLanguage() {
+      console.log(this.formData.language);
+    },
+    getCountry () {
+      console.log(this.formData.country);
+    }
   },
 };
 </script>
@@ -82,7 +93,36 @@ export default {
         <label>Last Name</label>
         <input type="text" v-model="formData.lastName" class="form-class" />
       </div>
-      <div class="d-flex align-items-center justify-content-center">
+      <div class="col-md-4 d-flex flex-column">
+        <label>Country</label>
+        <select
+          @change="getCountry"
+          class="form-class"
+          v-model="formData.country"
+        >
+          <option
+            v-for="(country, index) in countries"
+            :key="index"
+            :value="country.name"
+          >
+            {{ country.name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-4 d-flex flex-column">
+        <label>Language</label>
+        <select
+          @change="getLanguage"
+          class="form-class"
+          v-model="formData.language"
+        >
+          <option value="English">English</option>
+          <option value="Swahili">Swahili</option>
+          <option value="Spanish">Spanish</option>
+          <option value="French">French</option>
+        </select>
+      </div>
+      <div class="d-flex align-items-center justify-content-center mt-4">
         <button class="btn btn-light" @click="updateProfile">
           Update Profile
         </button>
@@ -111,6 +151,13 @@ export default {
 input {
   height: 35px;
   padding: 10px;
+  border: black 1px solid;
+  border-radius: 5px;
+}
+
+select {
+  height: 35px;
+  padding: 0 10px 0 10px;
   border: black 1px solid;
   border-radius: 5px;
 }
